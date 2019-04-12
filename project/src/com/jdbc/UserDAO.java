@@ -13,7 +13,7 @@ public class UserDAO {
 	private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String DB_CONNECTION = "jdbc:mysql://localhost/frutapp?autoReconnect=true&useSSL=false";
 	private static final String DB_USER = "root";
-	private static final String DB_PASSWORD = "root";
+	private static final String DB_PASSWORD = "MyNewPassword";
 
 	private Connection getConnection() {
 

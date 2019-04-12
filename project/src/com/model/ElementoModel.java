@@ -31,6 +31,11 @@ public class ElementoModel {
 	public void setPk_elemento(int pk_elemento) {
 		this.pk_elemento = pk_elemento;
 	}
+
+	@Override
+	public String toString() {
+		return "ElementoModel [pk_elemento=" + pk_elemento + ", str_nombre_elemento=" + str_nombre_elemento + "]";
+	}
 	
 	
 	

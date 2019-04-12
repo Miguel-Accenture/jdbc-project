@@ -2,13 +2,15 @@ package com.main;
 
 import java.util.Iterator;
 
+import com.jdbc.ElementoDAO;
 import com.jdbc.UserDAO;
+import com.model.ElementoModel;
 import com.model.UserModel;
 
 public class Main {
-
-	public static void main(String[] args) {
-
+	
+	public static void userDAOtest() {
+		
 		UserDAO userDAO = new UserDAO();
 
 		Iterator<UserModel> it = userDAO.findAllUsers().iterator();
@@ -45,6 +47,51 @@ public class Main {
 			System.out.println(createdUser + " deleted");
 		}
 
+		
+	}
+
+	public static void elementosDAOtest() {
+		
+		ElementoDAO elementoDAO = new ElementoDAO();
+
+		Iterator<ElementoModel> it = elementoDAO.findAllElemento().iterator();
+		System.out.println("call findAllelementos method");
+		while (it.hasNext()) {
+			System.out.println(it.next());
+		}
+
+		System.out.println("\ncall findElementoById method");
+		System.out.println(elementoDAO.findElementoById(2));
+		
+		System.out.println("\ncall createElemento method");
+		ElementoModel createdElemento = elementoDAO.createElemento("Kiwi");
+		System.out.println(createdElemento);
+
+		createdElemento.setStr_nombre_elemento("Kiwi actualiazado");
+		
+		System.out.println("\ncall updateElemento method");
+		if (elementoDAO.updateElemento(createdElemento)) {
+			System.out.println(createdElemento + " updated");
+		}
+
+		System.out.println("\ncall deleteElemento method");
+		if (elementoDAO.deleteElemento(createdElemento)) {
+			System.out.println(createdElemento + " deleted");
+		}
+		
+		System.out.println("\ncall deleteElement method");
+		if (elementoDAO.deleteElement(createdElemento)) {
+			System.out.println(createdElemento + " deleted");
+		}
+		
+	}
+	
+	
+	
+	public static void main(String[] args) {
+
+	//userDAOtest();
+		elementosDAOtest();
 	}
 
 }
