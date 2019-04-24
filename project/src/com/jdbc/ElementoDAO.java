@@ -10,7 +10,7 @@ import com.model.ElementoModel;
 import com.model.UserModel;
 
 public class ElementoDAO {
-	
+
 	private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String DB_CONNECTION = "jdbc:mysql://localhost/frutapp?autoReconnect=true&useSSL=false";
 	private static final String DB_USER = "root";
@@ -32,7 +32,7 @@ public class ElementoDAO {
 		return conn;
 
 	}
-	
+
 	public ArrayList<ElementoModel> findAllElemento() {
 
 		Connection conn = null;
@@ -50,8 +50,8 @@ public class ElementoDAO {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 
-				ElementoModel elemento = new ElementoModel(rs.getInt("pk_elemento"), rs.getString("str_nombre_elemento")
-);
+				ElementoModel elemento = new ElementoModel(rs.getInt("pk_elemento"),
+						rs.getString("str_nombre_elemento"));
 
 				elementos.add(elemento);
 			}
@@ -106,8 +106,7 @@ public class ElementoDAO {
 
 			if (rs.next()) {
 
-			 elemento = new ElementoModel(rs.getInt("pk_elemento"), rs.getString("str_nombre_elemento")
-						);
+				elemento = new ElementoModel(rs.getInt("pk_elemento"), rs.getString("str_nombre_elemento"));
 
 			}
 
@@ -142,8 +141,6 @@ public class ElementoDAO {
 
 	}
 
-	
-
 	public ElementoModel createElemento(String str_nombre_elemento) {
 
 		Connection conn = null;
@@ -157,8 +154,7 @@ public class ElementoDAO {
 
 			conn = getConnection();
 
-			pstInsert = conn.prepareStatement(
-					"INSERT INTO elemento(str_nombre_elemento) VALUES(?)");
+			pstInsert = conn.prepareStatement("INSERT INTO elemento(str_nombre_elemento) VALUES(?)");
 
 			pstInsert.setString(1, str_nombre_elemento);
 
@@ -218,11 +214,9 @@ public class ElementoDAO {
 
 			conn = getConnection();
 
-			pst = conn.prepareStatement(
-					"UPDATE elemento SET str_nombre_elemento = ?");
+			pst = conn.prepareStatement("UPDATE elemento SET str_nombre_elemento = ?");
 
 			pst.setString(1, elemento.getStr_nombre_elemento());
-			
 
 			if (pst.executeUpdate() == 1) {
 				updated = true;
@@ -294,7 +288,7 @@ public class ElementoDAO {
 		return deleted;
 
 	}
-	
+
 	public Boolean deleteElement(ElementoModel elemento) {
 
 		Connection conn = null;
@@ -339,8 +333,3 @@ public class ElementoDAO {
 	}
 
 }
-
-	
-	
-
-
